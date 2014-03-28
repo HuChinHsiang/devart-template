@@ -1,16 +1,29 @@
 {
     "technologies": {
         "apis": [
-            "insert apis"
+            "google",
+            "flickr",
+            "reddit",
+            "4chain",
+            "facebook",
+            "google apis",
+            "google trend"
         ],
         "platforms": [
-            "insert platforms"
+            "Windows",
+            "OSX",
+            "Installation"
         ],
         "toolkits": [
-            "insert toolkits"
+            "Arduino",
+            "Actionscript"
         ]
     },
     "themes": [
-        "insert themes"
+        "game",
+        "interactive",
+        "pinball",
+        "network",
+        "game"
     ]
 }

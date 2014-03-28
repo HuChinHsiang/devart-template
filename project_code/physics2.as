@@ -1,0 +1,1 @@
+﻿package  {	import wck.*;	import flash.display.MovieClip;			public class physics2 extends wck.World {						public function physics2() {			// constructor code		}	}	}

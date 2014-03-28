@@ -1,33 +1,47 @@
-# Project Title
-Insert the name of your project
+# neuromancer
 
 ## Authors
-- Insert main author name, surname, github account
-- Insert other author(s) name, surname, github account (one per list element)
+- Chin-Hsiang, Hu https://github.com/HuChinHsiang/
 
 ## Description
-Insert a description containing about 100 to 150 words, including your motivation and the meaning behind your idea and execution. The Judges will be keen to know how your idea pushes the boundaries of code and technology. 
+concept talking about 
+HOW INTERNET DISTRACT PEOPLE ATTENTION AND BRAINWASHING OUR MIND
+it is big problem in Asia I think in other countrys. also, a lot people can not without internet even when they working, moving or boring we always have tablet computer, mobile phone, laptop can keep online anytime everywhere, but during we surfing on internet actually most of time we have no PURPOSE(po pers ), we just look friends recent state, videos, funny images, even when we working, still will DISTRACT to visit facebook, twitter for couple hours because always have link to different website see different funny video or interesting images.
 
 ## Link to Prototype
-NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
-
-[Example Link](http://www.google.com "Example Link")
+[Website](http://neuromancer.tw "Website")
+[Youtube](https://www.youtube.com/watch?v=5FWiSBrzfrI "Youtube")
 
 ## Example Code
-NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
 ```
-function test() {
-  console.log("Printing a test");
+function init():void{
+	black_mc.visible=false;
+	gameInit();
+	gameStart();
+	posInit();
+}
+function gameInit():void{
+	loadSound();
+	loadTrends();
+	initGrid();
+	config();
+	initSocket();
+	initTwitter();
 }
 ```
 ## Links to External Libraries
- NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
+[WCK](https://github.com/jesses/wck "WCK")
 
-[Example Link](http://www.google.com "Example Link")
+[AS3 CRYPTO](http://code.google.com/p/as3crypto/ "AS3 CRYPTO")
+
+[FLICKR](https://code.google.com/p/as3flickrlib/ "FLICKR")
+
+[FACEBOOK API](https://code.google.com/p/facebook-actionscript-api/ "FACEBOOK API")
+
+[GOOGLE](https://code.google.com/p/googleas3api/ "GOOGLE")
+
 
 ## Images & Videos
-NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
+![COVER Image](project_images/cover.jpg?raw=true "COVER Image")
 
-![Example Image](project_images/cover.jpg?raw=true "Example Image")
-
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
+<iframe width="853" height="480" src="//www.youtube.com/embed/5FWiSBrzfrI?rel=0" frameborder="0" allowfullscreen></iframe>

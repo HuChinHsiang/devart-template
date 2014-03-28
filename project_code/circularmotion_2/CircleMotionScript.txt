@@ -1,0 +1,117 @@
+// Initialize starting value for t (in degrees) and the change in t for each
+//  press of the button.
+
+var degree:Number = 0;
+var degChange:Number = 1;
+
+
+// The triangle clip mcArrow can be resized by scaling its 
+//   height and width separately.
+
+mcArrow.scaleX = 0.5;
+mcArrow.scaleY = 0.5;
+
+
+/* The coordinates of the center of the circle and the radius of the circle
+	keep the motion of the clips aligned with the picture on the stage.  The circle
+	on stage must have width 200 and coordinates (100,100).
+*/
+
+var circleX:Number = 200;
+var circleY:Number = 200;
+var circleR:Number = 100;
+
+
+// The radial line segment mcLine should have its registration point 
+// (i.e., its left endpoint) on the center of circle.
+
+mcLine.x = circleX;
+mcLine.y = circleY;
+
+
+// This function updates the position and rotation of mcArrow, the rotation of 
+//  mcLine, an the position and content of the dynamic textbox txtCoords.
+
+function updateArrow(t:Number):void {
+
+	var radianAngle:Number = t*Math.PI/180.0; // Convert t degrees to radians.
+
+
+	// Update position of mcArrow
+
+	mcArrow.x = circleX + circleR*Math.cos(radianAngle);
+	mcArrow.y = circleY - circleR*Math.sin(radianAngle);
+
+	
+	// Update rotation of mcArrow (note that Flash measures angles clockwise)
+
+	mcArrow.rotation = -t;
+	
+	// Update rotation of mcLine
+
+	mcLine.rotation = -t;
+
+	/* 	Update position of the dynamic textbox txtCoords.
+	 	Note the adjustment for the height and width of the textbox
+		and the larger radius circle in which the textbox must travel.
+		The offset and the scaling of the circle require some trial and error
+		unless you have been very scientific with your choice of textbox size and
+		your placement of the circle on the stage.
+	*/
+
+	txtCoords.x = circleX - 35 + 1.5*circleR*Math.cos(radianAngle);
+	txtCoords.y = circleY - 10 - 1.5*circleR*Math.sin(radianAngle);
+
+	// Build the string showing the x- and y-coordinates to two decimal places,
+	//  and put this into the textbox.
+
+	txtCoords.text = "(" + String(Math.round(100*Math.cos(radianAngle))/100) + ", " + String(Math.round(100*Math.sin(radianAngle))/100) + ")";
+
+	// Put the current (degree) value of t into the appropriate textbox.
+
+	txtDegrees.text = String(t);
+}
+
+
+// When btnLess is clicked, reduce that value of t by the preset amount.
+//  Make this change mod 360 to keep the angle measures between -359 and 359.
+
+btnLess.addEventListener(MouseEvent.CLICK, decreaseAngle);
+
+function decreaseAngle(evt:MouseEvent):void {
+	degree = (degree - degChange) % 360;
+	updateArrow(degree);
+}
+
+
+// When btnMore is pressed, increase that value of t by the preset amount.
+
+btnMore.addEventListener(MouseEvent.CLICK, increaseAngle);
+
+function increaseAngle(evt:MouseEvent):void {
+	degree = (degree + degChange) % 360;
+	updateArrow(degree);
+}
+
+
+/*  Add a listener for keyboard input so that the left and right arrow keys
+   	can produce the same effect as the btnLess and btnMore Mouse Click methods.
+*/
+
+stage.addEventListener(KeyboardEvent.KEY_DOWN,keyPressed);
+
+function keyPressed(evt:KeyboardEvent):void {
+	if (evt.keyCode == Keyboard.LEFT) {
+    	degree = (degree - degChange) % 360;
+		updateArrow(degree);
+    }
+	if (evt.keyCode == Keyboard.RIGHT) {
+    	degree = (degree + degChange) % 360;
+		updateArrow(degree);
+    }
+}
+
+// Call this function initially so that the clips are placed in the correct 
+//  postions original.  This function also initializes all dynamic textboxes.
+
+updateArrow(degree);
